@@ -1,0 +1,1101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Movie Seat Selection Flat::Ticket Booking</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <link rel="stylesheet" href="{% static 'css2/style.css' %}" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <!-- //fonts -->
+</head>
+
+<body onload="onLoaderFunc()">
+    <h1>Movie Seat Selection</h1>
+    <div class="container">
+
+        <div class="w3ls-reg">
+            <!-- input fields -->
+            <div class="inputForm">
+                <h2>fill the required details below and select your seats</h2>
+                <div class="mr_agilemain">
+                    <div class="agileits-left">
+                        <label> Name
+                            <span>*</span>
+                        </label>
+                        <input type="text" id="Username" required>
+                    </div>
+                    <div class="agileits-right">
+                        <label> Number of Seats
+                            <span>*</span>
+                        </label>
+                        <input type="number" id="Numseats" required min="1">
+                    </div>
+                </div>
+                <button onclick="takeData()">Start Selecting</button>
+            </div>
+            <!-- //input fields -->
+            <!-- seat availabilty list -->
+            <ul class="seat_w3ls">
+                <li class="smallBox greenBox">Selected Seat</li>
+
+                <li class="smallBox redBox">Reserved Seat</li>
+
+                <li class="smallBox emptyBox">Empty Seat</li>
+            </ul>
+            <!-- seat availabilty list -->
+            <!-- seat layout -->
+            <div class="seatStructure txt-center" style="overflow-x:auto;">
+                <table id="seatsBlock">
+                    <p id="notification"></p>
+                    <tr>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>
+                            {% if 'A1' in li %}
+                            <span class="smallBox redBox" value="A1"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A1">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A2" in li %}
+                            <span class="smallBox redBox" value="A2"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A2">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A3" in li %}
+                            <span class="smallBox redBox" value="A3"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A3">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A4" in li %}
+                            <span class="smallBox redBox" value="A4"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A4">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A5" in li %}
+                            <span class="smallBox redBox" value="A5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A5">
+                            {% endif %}
+                        </td>
+                        <td class="seatGap"></td>
+                        <td>
+                            {% if "A6" in li %}
+                            <span class="smallBox redBox" value="A6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A7" in li %}
+                            <span class="smallBox redBox" value="A7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A8" in li %}
+                            <span class="smallBox redBox" value="A8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A9" in li %}
+                            <span class="smallBox redBox" value="A9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A10" in li %}
+                            <span class="smallBox redBox" value="A10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A11" in li %}
+                            <span class="smallBox redBox" value="A11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "A12" in li %}
+                            <span class="smallBox redBox" value="A12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="A12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>B</td>
+                        <td>
+                            {% if "B1" in li %}
+                            <span class="smallBox redBox" value="B1"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B1">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B2" in li %}
+                            <span class="smallBox redBox" value="B2"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B2">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B3" in li %}
+                            <span class="smallBox redBox" value="B3"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B3">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B4" in li %}
+                            <span class="smallBox redBox" value="B4"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B4">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B5" in li %}
+                            <span class="smallBox redBox" value="B5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "B6" in li %}
+                            <span class="smallBox redBox" value="B6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B7" in li %}
+                            <span class="smallBox redBox" value="B7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B8" in li %}
+                            <span class="smallBox redBox" value="B8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B9" in li %}
+                            <span class="smallBox redBox" value="B9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B10" in li %}
+                            <span class="smallBox redBox" value="B10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B11" in li %}
+                            <span class="smallBox redBox" value="B11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "B12" in li %}
+                            <span class="smallBox redBox" value="B12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="B12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>C</td>
+                        <td>
+                            {% if "C1" in li %}
+                            <span class="smallBox redBox" value="C1"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C1">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C2" in li %}
+                            <span class="smallBox redBox" value="C2"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C2">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C3" in li %}
+                            <span class="smallBox redBox" value="C3"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C3">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C4" in li %}
+                            <span class="smallBox redBox" value="C4"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C4">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C5" in li %}
+                            <span class="smallBox redBox" value="C5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "C6" in li %}
+                            <span class="smallBox redBox" value="C6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C7" in li %}
+                            <span class="smallBox redBox" value="C7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C8" in li %}
+                            <span class="smallBox redBox" value="C8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C9" in li %}
+                            <span class="smallBox redBox" value="C9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C10" in li %}
+                            <span class="smallBox redBox" value="C10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C11" in li %}
+                            <span class="smallBox redBox" value="C11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "C12" in li %}
+                            <span class="smallBox redBox" value="C12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="C12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>D</td>
+                        <td>
+                            {% if "D1" in li %}
+                            <span class="smallBox redBox" value="D1"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D1">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D2" in li %}
+                            <span class="smallBox redBox" value="D2"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D2">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D3" in li %}
+                            <span class="smallBox redBox" value="D3"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D3">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D4" in li %}
+                            <span class="smallBox redBox" value="D4"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D4">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D5" in li %}
+                            <span class="smallBox redBox" value="D5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "D6" in li %}
+                            <span class="smallBox redBox" value="D6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D7" in li %}
+                            <span class="smallBox redBox" value="D7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D8" in li %}
+                            <span class="smallBox redBox" value="D8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D9" in li %}
+                            <span class="smallBox redBox" value="D9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D10" in li %}
+                            <span class="smallBox redBox" value="D10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D11" in li %}
+                            <span class="smallBox redBox" value="D11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "D12" in li %}
+                            <span class="smallBox redBox" value="D12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="D12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td>E</td>
+                            <td>
+                                {% if "E1" in li %}
+                                <span class="smallBox redBox" value="E1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="E1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "E2" in li %}
+                                <span class="smallBox redBox" value="E2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="E2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "E3" in li %}
+                                <span class="smallBox redBox" value="E3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="E3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "E4" in li %}
+                                <span class="smallBox redBox" value="E4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="E4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "E5" in li %}
+                            <span class="smallBox redBox" value="E5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "E6" in li %}
+                            <span class="smallBox redBox" value="E6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E7" in li %}
+                            <span class="smallBox redBox" value="E7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E8" in li %}
+                            <span class="smallBox redBox" value="E8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E9" in li %}
+                            <span class="smallBox redBox" value="E9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E10" in li %}
+                            <span class="smallBox redBox" value="E10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E11" in li %}
+                            <span class="smallBox redBox" value="E11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "E12" in li %}
+                            <span class="smallBox redBox" value="E12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="E12">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr class="seatVGap"></tr>
+
+                    <tr>
+                            <td>F</td>
+                            <td>
+                                {% if "F1" in li %}
+                                <span class="smallBox redBox" value="F1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="F1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "F2" in li %}
+                                <span class="smallBox redBox" value="F2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="F2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "F3" in li %}
+                                <span class="smallBox redBox" value="F3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="F3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "F4" in li %}
+                                <span class="smallBox redBox" value="F4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="F4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "F5" in li %}
+                            <span class="smallBox redBox" value="F5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "F6" in li %}
+                            <span class="smallBox redBox" value="F6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F7" in li %}
+                            <span class="smallBox redBox" value="F7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F8" in li %}
+                            <span class="smallBox redBox" value="F8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F9" in li %}
+                            <span class="smallBox redBox" value="F9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F10" in li %}
+                            <span class="smallBox redBox" value="F10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F11" in li %}
+                            <span class="smallBox redBox" value="F11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "F12" in li %}
+                            <span class="smallBox redBox" value="F12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="F12">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                            <td>G</td>
+                            <td>
+                                {% if "G1" in li %}
+                                <span class="smallBox redBox" value="G1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="G1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "G2" in li %}
+                                <span class="smallBox redBox" value="G2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="G2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "G3" in li %}
+                                <span class="smallBox redBox" value="G3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="G3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "G4" in li %}
+                                <span class="smallBox redBox" value="G4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="G4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "G5" in li %}
+                            <span class="smallBox redBox" value="G5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "G6" in li %}
+                            <span class="smallBox redBox" value="G6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G7" in li %}
+                            <span class="smallBox redBox" value="G7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G8" in li %}
+                            <span class="smallBox redBox" value="G8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G9" in li %}
+                            <span class="smallBox redBox" value="G9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G10" in li %}
+                            <span class="smallBox redBox" value="G10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G11" in li %}
+                            <span class="smallBox redBox" value="G11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "G12" in li %}
+                            <span class="smallBox redBox" value="G12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="G12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                  <tr>
+                            <td>H</td>
+                            <td>
+                                {% if "H1" in li %}
+                                <span class="smallBox redBox" value="H1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="H1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "H2" in li %}
+                                <span class="smallBox redBox" value="H2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="H2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "H3" in li %}
+                                <span class="smallBox redBox" value="H3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="H3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "H4" in li %}
+                                <span class="smallBox redBox" value="H4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="H4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "H5" in li %}
+                            <span class="smallBox redBox" value="H5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "H6" in li %}
+                            <span class="smallBox redBox" value="H6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H7" in li %}
+                            <span class="smallBox redBox" value="H7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H8" in li %}
+                            <span class="smallBox redBox" value="H8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H9" in li %}
+                            <span class="smallBox redBox" value="H9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H10" in li %}
+                            <span class="smallBox redBox" value="H10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H11" in li %}
+                            <span class="smallBox redBox" value="H11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "H12" in li %}
+                            <span class="smallBox redBox" value="H12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="H12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                   <tr>
+                            <td>I</td>
+                            <td>
+                                {% if "I1" in li %}
+                                <span class="smallBox redBox" value="I1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="I1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "I2" in li %}
+                                <span class="smallBox redBox" value="I2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="I2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "I3" in li %}
+                                <span class="smallBox redBox" value="I3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="I3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "I4" in li %}
+                                <span class="smallBox redBox" value="I4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="I4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "I5" in li %}
+                            <span class="smallBox redBox" value="I5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "I6" in li %}
+                            <span class="smallBox redBox" value="I6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I7" in li %}
+                            <span class="smallBox redBox" value="I7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I8" in li %}
+                            <span class="smallBox redBox" value="I8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I9" in li %}
+                            <span class="smallBox redBox" value="I9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I10" in li %}
+                            <span class="smallBox redBox" value="I10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I11" in li %}
+                            <span class="smallBox redBox" value="I11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "I12" in li %}
+                            <span class="smallBox redBox" value="I12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="I12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                   <tr>
+                            <td>J</td>
+                            <td>
+                                {% if "J1" in li %}
+                                <span class="smallBox redBox" value="J1"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="J1">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "J2" in li %}
+                                <span class="smallBox redBox" value="J2"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="J2">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "J3" in li %}
+                                <span class="smallBox redBox" value="J3"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="J3">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if "J4" in li %}
+                                <span class="smallBox redBox" value="J4"></span>
+                                {% else %}
+                                <input type="checkbox" class="seats" value="J4">
+                                {% endif %}
+                            </td>
+                        <td>
+                            {% if "J5" in li %}
+                            <span class="smallBox redBox" value="J5"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J5">
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td>
+                            {% if "J6" in li %}
+                            <span class="smallBox redBox" value="J6"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J6">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J7" in li %}
+                            <span class="smallBox redBox" value="J7"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J7">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J8" in li %}
+                            <span class="smallBox redBox" value="J8"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J8">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J9" in li %}
+                            <span class="smallBox redBox" value="J9"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J9">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J10" in li %}
+                            <span class="smallBox redBox" value="J10"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J10">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J11" in li %}
+                            <span class="smallBox redBox" value="J11"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J11">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if "J12" in li %}
+                            <span class="smallBox redBox" value="J12"></span>
+                            {% else %}
+                            <input type="checkbox" class="seats" value="J12">
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div class="screen">
+                    <h2 class="wthree">Screen this way</h2>
+                </div>
+                <button onclick="updateTextArea()">Confirm Selection</button>
+            </div>
+            <!-- //seat layout -->
+            <!-- details after booking displayed here -->
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="" style="overflow-x:auto;">
+                <table class="Displaytable w3ls-table" style="width:100%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of Seats</th>
+                        <th>Seats</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea id="nameDisplay" name="name" readonly></textarea>
+                        </td>
+                        <td>
+                            <textarea id="NumberDisplay" name="num" readonly></textarea>
+                        </td>
+                        <td>
+                            <textarea id="seatsDisplay" name="seat" readonly></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <button type="submit" style="margin-top:2%;float:center">Book Now</button>
+</form>
+            <!-- //details after booking displayed here -->
+        </div>
+    </div>
+    <div class="copy-wthree">
+    </div>
+
+
+    <!-- js -->
+    <script src="{% static 'js2/jquery-2.2.3.min.js' %}"></script>
+    <!-- //js -->
+    <!-- script for seat selection -->
+    <script>
+        function onLoaderFunc() {
+            $(".seatStructure *").prop("disabled", true);
+            $(".displayerBoxes *").prop("disabled", true);
+        }
+
+        function takeData() {
+            if (($("#Username").val().length == 0) || ($("#Numseats").val().length == 0)) {
+                alert("Please Enter your Name and Number of Seats");
+            } else {
+                $(".inputForm *").prop("disabled", true);
+                $(".seatStructure *").prop("disabled", false);
+                document.getElementById("notification").innerHTML =
+                    "<b style='margin-bottom:0px;background:#ff9800;letter-spacing:1px;'>Please Select your Seats NOW!</b>";
+            }
+        }
+
+
+        function updateTextArea() {
+
+            if ($("input:checked").length == ($("#Numseats").val())) {
+                $(".seatStructure *").prop("disabled", true);
+
+                var allNameVals = [];
+                var allNumberVals = [];
+                var allSeatsVals = [];
+
+                //Storing in Array
+                allNameVals.push($("#Username").val());
+                allNumberVals.push($("#Numseats").val());
+                $('#seatsBlock :checked').each(function () {
+                    allSeatsVals.push($(this).val());
+                });
+
+                //Displaying 
+                $('#nameDisplay').val(allNameVals);
+                $('#NumberDisplay').val(allNumberVals);
+                $('#seatsDisplay').val(allSeatsVals);
+            } else {
+                alert("Please select " + ($("#Numseats").val()) + " seats")
+            }
+        }
+
+
+        function myFunction() {
+            alert($("input:checked").length);
+        }
+
+        /*
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        */
+
+
+        $(":checkbox").click(function () {
+            if ($("input:checked").length == ($("#Numseats").val())) {
+                $(":checkbox").prop('disabled', true);
+                $(':checked').prop('disabled', false);
+            } else {
+                $(":checkbox").prop('disabled', false);
+            }
+        });
+    </script>
+    {% if error %}
+<script>
+    alert('seats are selected..');
+    window.location =  "{% url 'payment' book.id %}";
+</script>
+{% endif %}
+</body>
+
+</html>

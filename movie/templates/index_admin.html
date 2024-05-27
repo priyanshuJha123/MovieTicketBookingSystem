@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html lang="zxx">
+
+<head>
+	<title>Admin Pannel ::Movie Ticket</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="{% static 'css1/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+
+	<!-- Custom CSS -->
+	<link href="{% static 'css1/style.css' %}" rel='stylesheet' type='text/css' />
+	<!-- font-awesome icons -->
+	<link href="{% static 'css1/fontawesome-all.min.css' %}" rel="stylesheet">
+	<!-- //Custom Theme files -->
+
+	<!-- side nav css file -->
+	<link href="{% static 'css1/SidebarNav.min.css' %}" media='all' rel='stylesheet' type='text/css' />
+	<!-- //side nav css file -->
+	<!--webfonts-->
+	<!-- logo -->
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<!-- titles -->
+	<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
+	<!-- body -->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+	<!--//webfonts-->
+</head>
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+		<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<!--left-fixed -navigation-->
+			<aside class="sidebar-left">
+				<h1>
+					<a href="index.html" class="logo">
+						Admin
+					</a>
+				</h1>
+				<ul class="sidebar-menu">
+					<li class="treeview active">
+						<a href="{% url 'admin_home' %}">
+							<i class="fas fa-home"></i>
+							<span>Home</span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="{% url 'view_user' %}">
+							<i class="fab fa-buromobelexperte"></i>
+							<span>View User</span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="{% url 'all_booking' %}">
+							<i class="fab fa-servicestack"></i>
+							<span>All Booking</span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-plus"></i>
+							<span>Movie</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li>
+								<a href="{% url 'add_movie' %}">
+									<i class="fa fa-angle-right"></i>Add Movie</a>
+							</li>
+							<li>
+								<a href="{% url 'view_movie' %}">
+									<i class="fa fa-angle-right"></i>Movie Report</a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-plus"></i>
+							<span>Certificate</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li>
+								<a href="{% url 'add_certificate' %}">
+									<i class="fa fa-angle-right"></i>Add Certificate</a>
+							</li>
+							<li>
+								<a href="{% url 'view_certificate' %}">
+									<i class="fa fa-angle-right"></i>Certificate Report</a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-plus"></i>
+							<span>MovieType</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li>
+								<a href="{% url 'add_movie_type' %}">
+									<i class="fa fa-angle-right"></i>Add MovieType</a>
+							</li>
+							<li>
+								<a href="{% url 'view_movie_type' %}">
+									<i class="fa fa-angle-right"></i>MovieType Report</a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-plus"></i>
+							<span>Language</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu">
+							<li>
+								<a href="{% url 'add_language' %}">
+									<i class="fa fa-angle-right"></i>Add Language</a>
+							</li>
+							<li>
+								<a href="{% url 'view_language' %}">
+									<i class="fa fa-angle-right"></i>Language Report</a>
+							</li>
+
+						</ul>
+					</li>
+				</ul>
+				<a href="{% url 'logout' %}"><button type="button" class="btn btn-info btn-lg btn-block mt-5 w3ls-btn p-1 text-uppercase font-weight-bold" data-toggle="modal"
+				    aria-pressed="false" data-target="#exampleModal">
+					Logout
+				</button></a>
+			</aside>
+		</div>
+	</div>
+	<!--left-fixed -navigation-->
+	<!-- header-starts -->
+	<header class="header-section">
+		<div class="header-left  clearfix">
+			<!--logo start-->
+			<div class="brand">
+				<button id="showLeftPush">
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+			<!--logo end-->
+		</div>
+		<div class="header-right">
+		</div>
+	</header>
+	<!-- //header-ends -->
+	<!-- main content start-->
+	<div id="page-wrapper">
+		<!-- //banner -->
+		<!-- about -->
+	{% block body %}
+	{% endblock %}
+		<!-- //about -->
+	</div>
+	<!-- js-->
+	<script src="{% static 'js1/jquery-2.2.3.min.js' %}"></script>
+	<!-- js-->
+
+	<!-- for toggle left push menu script -->
+	<script src="{% static 'js1/classie.js' %} "></script>
+	<script>
+		var menuLeft = document.getElementById('cbp-spmenu-s1'),
+			showLeftPush = document.getElementById('showLeftPush'),
+			body = document.body;
+
+		showLeftPush.onclick = function () {
+			classie.toggle(this, 'active');
+			classie.toggle(body, 'cbp-spmenu-push-toright');
+			classie.toggle(menuLeft, 'cbp-spmenu-open');
+			disableOther('showLeftPush');
+		};
+
+
+		function disableOther(button) {
+			if (button !== 'showLeftPush') {
+				classie.toggle(showLeftPush, 'disabled');
+			}
+		}
+	</script>
+	<!-- //Classie -->
+	<!-- //for toggle left push menu script -->
+	<!-- side nav js -->
+	<script src="{% static 'js1/SidebarNav.min.js' %}"></script>
+	<script>
+		$('.sidebar-menu').SidebarNav()
+	</script>
+	<!-- //side nav js -->
+	<!-- script for password match -->
+	<script>
+		window.onload = function () {
+			document.getElementById("password1").onchange = validatePassword;
+			document.getElementById("password2").onchange = validatePassword;
+		}
+
+		function validatePassword() {
+			var pass2 = document.getElementById("password2").value;
+			var pass1 = document.getElementById("password1").value;
+			if (pass1 != pass2)
+				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("password2").setCustomValidity('');
+			//empty string means no validation error
+		}
+	</script>
+	<!-- script for password match -->
+	<!-- start-smooth-scrolling -->
+	<script src="{% static 'js1/move-top.js' %} "></script>
+	<script src="{% static 'js1/easing.js' %} "></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll ").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+	<!-- smooth-scrolling-of-move-up -->
+	<script>
+		$(document).ready(function () {
+			/*
+			 var defaults = {
+				 containerID: 'toTop', // fading element id
+				 containerHoverID: 'toTopHover', // fading element hover id
+				 scrollSpeed: 1200,
+				 easingType: 'linear' 
+			 };
+			 */
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<script src="{% static 'js1/SmoothScroll.min.js' %} "></script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<script src="{% static 'js1/counter.js' %}"></script>
+	<!-- //stats -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{% static 'js1/bootstrap.js' %} ">
+	</script>
+	<!-- //Bootstrap Core JavaScript -->
+
+</body>
+
+</html>

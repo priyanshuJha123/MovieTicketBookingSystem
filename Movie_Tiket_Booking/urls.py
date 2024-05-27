@@ -1,0 +1,45 @@
+from django.contrib import admin
+from django.urls import path
+from movie.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', Home,name="home"),
+    path('login', Login_User,name="login"),
+    path('logout', Logout,name="logout"),
+    path('about', About,name="about"),
+    path('contact', Contact,name="contact"),
+    path('signup_user', Signup_User,name="signup_user"),
+    path('edit_profile', Edit_Profile,name="edit_profile"),
+    path('change_password', Change_Password,name="change_password"),
+    path('admin_home', Admin_Home,name="admin_home"),
+    path('add_certificate', Add_Certificate,name="add_certificate"),
+    path('add_movie_type', Add_Movie_Type,name="add_movie_type"),
+    path('add_language', Add_Language,name="add_language"),
+    path('add_movie', Add_Movie,name="add_movie"),
+    path('view_certificate', View_Certificate,name="view_certificate"),
+    path('edit_certificate<int:pid>', Edit_Certificate,name="edit_certificate"),
+    path('delete_certificate<int:pid>', delete_certificate,name="delete_certificate"),
+    path('view_movie_type', View_Movie_Type,name="view_movie_type"),
+    path('edit_movie_type<int:pid>', Edit_Movie_Type,name="edit_movie_type"),
+    path('delete_movie_type<int:pid>', delete_movie_type,name="delete_movie_type"),
+    path('view_language', View_Language,name="view_language"),
+    path('edit_language<int:pid>', Edit_Language,name="edit_language"),
+    path('delete_language<int:pid>', delete_language,name="delete_language"),
+    path('view_movie', View_Movie,name="view_movie"),
+    path('view_booking', View_Booking,name="view_booking"),
+    path('all_movies<int:pid>', All_Movies,name="all_movies"),
+    path('view_user', View_User,name="view_user"),
+    path('all_booking', All_Booking,name="all_booking"),
+    path('edit_movie<int:pid>', Edit_Movie,name="edit_movie"),
+    path('delete_movie<int:pid>', delete_movie,name="delete_movie"),
+    path('movie_detail<int:pid>', Movie_detail,name="movie_detail"),
+    path('view_trailer<int:pid>', View_Trailer,name="view_trailer"),
+    path('book_ticket<int:pid>', Book_Ticket,name="book_ticket"),
+    path('payment<int:pid>', Movie_Payment,name="payment"),
+    path('delete_booking<int:pid>', delete_booking,name="delete_booking"),
+    path('delete_booking1<int:pid>', delete_booking1,name="delete_booking1"),
+    path('delete_user<int:pid>', delete_user,name="delete_user"),
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

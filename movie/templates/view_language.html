@@ -1,0 +1,75 @@
+{% extends 'index_admin.html' %}
+{% load static %}
+{% block body %}
+<link rel='stylesheet' type='text/css' href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<link rel='stylesheet' type='text/css' href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+
+<style>
+div.scrollmenu {
+  overflow: auto;
+  width:100%;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  text-align: center;
+
+  padding: 14px;
+  text-decoration: none;
+}
+
+</style>
+
+
+<div class="container ">
+    <div class="container-fluid">
+        <h1 align="center" style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:4%">View Language</h1>
+    <hr>                        <div class="scrollmenu">
+                                <table id="example" class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th style="width:100px">#</th>
+                                      <th style="width:200px">Language Name</th>
+                                      <th>Description</th>
+                                      <th style="width:200px">Action</th>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in data %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.name}}</td>
+                                  <td>{{i.description}}</td>
+                                  <td style="width:150px"><a href="{% url 'edit_language' i.id %}" ><button class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                  <a href="{% url 'delete_language' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+    </div></div>
+{% endblock %}
